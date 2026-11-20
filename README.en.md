@@ -23,8 +23,8 @@ An in-line composer control that replaces the standard model picker. It enables 
 - **Host Integration**: Leverages `session.selectModel` to maintain session-specific scope without overriding global defaults.
 
 ## Install
-1. **Clone**: `git clone https://github.com/Winjazw/dsh-effort-tiers.git`
-2. **Add**: Run `dsh plugin --profile desktop add /path/to/dsh-effort-tiers` (for Desktop).
+1. **Clone**: `git clone https://github.com/Winjazw/effort-slider.git`
+2. **Add**: Run `dsh plugin --profile desktop add /path/to/effort-slider` (for Desktop).
 3. **Enable**: Go to the Plugins page in DeepSeek Harness, find `Effort Slider`, and toggle it on.
 4. **Reload**: Restart the app or press `Cmd + R` to refresh the window.
 

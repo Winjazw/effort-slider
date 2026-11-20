@@ -23,8 +23,8 @@
 - **深度融合**：通过 `session.selectModel` 切换，不影响全局配置，完美兼容原厂逻辑。
 
 ## 安装
-1. **获取源码**：`git clone https://github.com/Winjazw/dsh-effort-tiers.git`
-2. **添加插件**：运行 `dsh plugin --profile desktop add /path/to/dsh-effort-tiers`（桌面版）。
+1. **获取源码**：`git clone https://github.com/Winjazw/effort-slider.git`
+2. **添加插件**：运行 `dsh plugin --profile desktop add /path/to/effort-slider`（桌面版）。
 3. **启用插件**：在 DeepSeek Harness 的「插件」页面找到 `Effort Slider` 并开启开关。
 4. **重载**：重启应用或按下 `Cmd + R` 刷新界面。
 

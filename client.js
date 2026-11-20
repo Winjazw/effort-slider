@@ -140,7 +140,7 @@ function edgeOf(el) {
 }
 
 window.__ModuleLoader__.load({
-  id: 'dsh-effort-tiers',
+  id: 'effort-slider',
   factory(require) {
     const React = require('react');
     const e = React.createElement;
@@ -609,7 +609,7 @@ window.__ModuleLoader__.load({
         }
         if (!disposeStyles) {
           const element = document.createElement('style');
-          element.setAttribute('data-dsh-plugin', 'dsh-effort-tiers');
+          element.setAttribute('data-dsh-plugin', 'effort-slider');
           element.textContent = CSS;
           document.head.appendChild(element);
           disposeStyles = () => element.remove();
