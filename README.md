@@ -9,7 +9,7 @@
 <p align="center">拖到最高档，整条轨道变成宇宙紫，星点和星云亮起来。</p>
 
 <p align="center">
-  <a href="#三步装上"><b>安装</b></a> ·
+  <a href="#怎么装上"><b>安装</b></a> ·
   <a href="#四档">四档</a> ·
   <a href="#换模型">换模型</a> ·
   <a href="#问答">问答</a> ·
@@ -85,7 +85,7 @@
 
 <br>
 
-## 三步装上
+## 怎么装上
 
 要求 DeepSeek Harness `0.2.2-rc.5` 及以上。
 
@@ -103,7 +103,9 @@ dsh plugin --profile desktop add /path/to/dsh-effort-tiers
 
 终端里没有 `dsh` 命令的话，先在桌面版菜单里选「管理 dsh 命令」。
 
-**3. 重启 DeepSeek Harness**，输入框里的模型选择器就变成了滑块。
+**3. 在「插件」页里启用它。** 列里会出现「推理强度滑块」，打开开关。
+
+**4. 重启 DeepSeek Harness**，输入框里的模型选择器就变成了滑块。
 
 没生效就 `Cmd + R` 刷新一次窗口。
 

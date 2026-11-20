@@ -101,7 +101,9 @@ dsh plugin --profile desktop add /path/to/dsh-effort-tiers
 
 If `dsh` is not on your PATH, use "Manage dsh command" from the desktop app menu first.
 
-**3. Restart DeepSeek Harness.** The model picker in the composer becomes the slider.
+**3. Enable it on the Plugins page.** "Reasoning effort slider" shows up in the list; turn it on.
+
+**4. Restart DeepSeek Harness.** The model picker in the composer becomes the slider.
 
 If it does not show up, press `Cmd + R` to reload the window.
 
