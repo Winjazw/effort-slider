@@ -13,7 +13,7 @@
  */
 
 const CSS = `
-.det-pill, .det-pill__dot, .det-panel, .det-model, .det-models, .det-models__row, .det-track, .det-track__dim, .det-track__ticks i { corner-shape: round; }
+.det-pill, .det-pill__dot, .det-panel, .det-head, .det-models, .det-models__row, .det-track, .det-track__dim, .det-track__ticks i { corner-shape: round; }
 .det-pill { display: inline-flex; align-items: center; gap: 5px; max-width: 220px; height: 24px; padding: 0 8px; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 999px; background: rgba(255, 255, 255, 0.05); color: #b9b6c6; font: 500 11.5px/1 Inter, system-ui, -apple-system, sans-serif; letter-spacing: 0.01em; cursor: pointer; transition: background 140ms ease, color 140ms ease, border-color 140ms ease; }
 .det-pill:hover { background: rgba(255, 255, 255, 0.09); color: #ece9f6; border-color: rgba(255, 255, 255, 0.16); }
 .det-pill[aria-expanded='true'] { background: rgba(139, 92, 246, 0.18); border-color: rgba(167, 139, 250, 0.45); color: #efeafd; }
@@ -26,17 +26,20 @@ const CSS = `
 .det-pill__chev { flex: none; opacity: 0.55; }
 .det-panel { position: fixed; z-index: 90; width: 220px; box-sizing: border-box; padding: 10px 10px 9px; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 14px; background: rgba(43, 40, 46, 0.97); box-shadow: 0 14px 32px -16px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.05); color: #e8e5f2; font-family: Inter, system-ui, -apple-system, sans-serif; animation: det-in 150ms cubic-bezier(0.22, 0.7, 0.3, 1); }
 @keyframes det-in { from { opacity: 0; transform: translateY(5px) scale(0.99); } to { opacity: 1; transform: none; } }
-.det-tier { text-align: center; font-size: 12px; font-weight: 600; line-height: 1.15; color: #a99bd6; transition: color 200ms ease; }
-.det-tier[data-max='1'] { background: linear-gradient(96deg, #cdb9ff 0%, #a98cf7 46%, #8b5cf6 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.det-model { display: flex; align-items: center; justify-content: center; gap: 3px; max-width: 100%; margin: 1px 0 8px; padding: 2px 4px; border: 0; border-radius: 7px; background: transparent; color: #a9a6b8; font: 400 10.5px/1.3 Inter, system-ui, -apple-system, sans-serif; cursor: pointer; }
-.det-model:hover { background: rgba(255, 255, 255, 0.06); color: #ddd9ea; }
-.det-model__name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.det-models { max-height: 152px; margin: -2px 0 7px; padding: 2px; overflow-y: auto; border-radius: 9px; background: rgba(0, 0, 0, 0.28); scrollbar-width: thin; }
-.det-models__group { padding: 5px 5px 2px; color: #74718a; font-size: 9px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
-.det-models__row { display: flex; align-items: center; gap: 5px; width: 100%; padding: 4px 7px; border: 0; border-radius: 6px; background: transparent; color: #cfcbdd; font: 400 11px/1.25 Inter, system-ui, -apple-system, sans-serif; text-align: left; cursor: pointer; }
+.det-head { display: flex; flex-direction: column; align-items: center; gap: 2px; width: 100%; margin: 0 0 8px; padding: 6px 4px 7px; border: 0; border-radius: 10px; background: transparent; color: inherit; cursor: pointer; transition: background 140ms ease; }
+.det-head:hover { background: rgba(255, 255, 255, 0.055); }
+.det-head:focus-visible { outline: 2px solid rgba(167, 139, 250, 0.75); outline-offset: 1px; }
+.det-head__tier { width: 100%; text-align: center; font-size: 12px; font-weight: 600; line-height: 1.15; color: #a99bd6; transition: color 200ms ease; }
+.det-head__tier[data-max='1'] { background: linear-gradient(96deg, #cdb9ff 0%, #a98cf7 46%, #8b5cf6 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.det-head__model { display: flex; align-items: center; gap: 3px; width: fit-content; max-width: 100%; margin: 0 auto; color: #a9a6b8; font: 400 10.5px/1.3 Inter, system-ui, -apple-system, sans-serif; }
+.det-head:hover .det-head__model { color: #ddd9ea; }
+.det-head__name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.det-models { max-height: 208px; margin: -2px 0 8px; padding: 3px; overflow-y: auto; border-radius: 10px; background: rgba(0, 0, 0, 0.28); scrollbar-width: thin; -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 16px), transparent); mask-image: linear-gradient(to bottom, #000 calc(100% - 16px), transparent); }
+.det-models__group { padding: 7px 6px 3px; color: #74718a; font-size: 9px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+.det-models__row { display: flex; align-items: center; gap: 6px; width: 100%; min-height: 29px; padding: 5px 8px; border: 0; border-radius: 7px; background: transparent; color: #cfcbdd; font: 400 11.5px/1.3 Inter, system-ui, -apple-system, sans-serif; text-align: left; cursor: pointer; }
 .det-models__row:hover { background: rgba(255, 255, 255, 0.07); color: #fff; }
 .det-models__row[data-on='1'] { color: #fff; background: rgba(139, 92, 246, 0.2); }
-.det-models__effort { margin-left: auto; flex: none; color: #8b87a0; font-size: 9px; }
+.det-models__effort { margin-left: auto; flex: none; color: #8b87a0; font-size: 9.5px; }
 .det-track { position: relative; height: 23px; border-radius: 999px; overflow: hidden; background: linear-gradient(92deg, #4566ea 0%, #6560dd 34%, #7a55cf 66%, #8a55d6 100%); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.32), 0 6px 14px -10px rgba(126, 76, 240, 0.9); cursor: pointer; touch-action: none; outline: none; -webkit-tap-highlight-color: transparent; }
 .det-track:focus-visible, .det-slider:focus-visible .det-track { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 0 0 2px rgba(167, 139, 250, 0.75), 0 6px 14px -10px rgba(126, 76, 240, 0.9); }
 .det-slider[data-disabled='1'] { cursor: default; }
@@ -427,17 +430,22 @@ window.__ModuleLoader__.load({
           'aria-label': '推理强度',
           style: anchor ? { left: anchor.left + 'px', bottom: anchor.bottom + 'px' } : { left: 12 },
         },
-        e('div', { className: 'det-tier', 'data-max': top ? '1' : undefined }, count ? efforts[index].name : '无推理档位'),
         e(
           'button',
           {
             type: 'button',
-            className: 'det-model',
+            className: 'det-head',
             'aria-expanded': showModels,
+            'aria-label': '切换模型',
             onClick: () => setShowModels(value => !value),
           },
-          e('span', { className: 'det-model__name' }, modelNameOf(state, state.current)),
-          e(Chevron, { size: 12 }),
+          e('span', { className: 'det-head__tier', 'data-max': top ? '1' : undefined }, count ? efforts[index].name : '无推理档位'),
+          e(
+            'span',
+            { className: 'det-head__model' },
+            e('span', { className: 'det-head__name' }, modelNameOf(state, state.current)),
+            e(Chevron, { size: 12 }),
+          ),
         ),
         showModels
           ? e('div', { className: 'det-models' }, rows.length ? rows : e('div', { className: 'det-models__group' }, '正在读取模型目录…'))
