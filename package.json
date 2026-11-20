@@ -36,7 +36,10 @@
     "docs",
     "icon.svg",
     "screenshots.json",
-    "assets"
+    "assets",
+    "README.md",
+    "README.en.md",
+    "LICENSE"
   ],
   "dsh": {
     "bundle": {
