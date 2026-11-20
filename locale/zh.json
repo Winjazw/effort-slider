@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "推理强度滑块",
+    "description": "在输入框工具行拖动推理档位，最高档把轨道点亮成宇宙粒子场。",
+    "detail": "docs/DETAIL.md"
+  }
+}

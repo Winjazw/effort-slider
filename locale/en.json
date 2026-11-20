@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Reasoning effort slider",
+    "description": "Drag a tier slider in the composer to change the model's reasoning effort; the top tier turns the track into a drifting cosmic particle field.",
+    "detail": "docs/DETAIL.md"
+  }
+}
