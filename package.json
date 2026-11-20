@@ -1,16 +1,16 @@
 {
-  "name": "dsh-effort-tiers",
+  "name": "effort-slider",
   "version": "0.1.0",
   "description": "A draggable reasoning-effort slider that replaces the composer's model picker; the top tier turns the track into a drifting cosmic particle field.",
   "license": "MIT",
   "author": "Zhiwei Wang",
-  "homepage": "https://github.com/Winjazw/dsh-effort-tiers#readme",
+  "homepage": "https://github.com/Winjazw/effort-slider#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Winjazw/dsh-effort-tiers.git"
+    "url": "git+https://github.com/Winjazw/effort-slider.git"
   },
   "bugs": {
-    "url": "https://github.com/Winjazw/dsh-effort-tiers/issues"
+    "url": "https://github.com/Winjazw/effort-slider/issues"
   },
   "keywords": [
     "dsh-plugin",
