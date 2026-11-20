@@ -36,7 +36,8 @@ const CSS = `
 .det-head__name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .det-models { max-height: 208px; margin: -2px 0 8px; padding: 3px; overflow-y: auto; border-radius: 10px; background: rgba(0, 0, 0, 0.28); scrollbar-width: thin; -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 16px), transparent); mask-image: linear-gradient(to bottom, #000 calc(100% - 16px), transparent); }
 .det-models__group { padding: 7px 6px 3px; color: #74718a; font-size: 9px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
-.det-models__row { display: flex; align-items: center; gap: 6px; width: 100%; min-height: 29px; padding: 5px 8px; border: 0; border-radius: 7px; background: transparent; color: #cfcbdd; font: 400 11.5px/1.3 Inter, system-ui, -apple-system, sans-serif; text-align: left; cursor: pointer; }
+.det-models__row { display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; width: 100%; min-height: 29px; padding: 5px 8px; border: 0; border-radius: 7px; background: transparent; color: #cfcbdd; font: 400 11.5px/1.3 Inter, system-ui, -apple-system, sans-serif; text-align: left; cursor: pointer; }
+.det-models__name { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .det-models__row:hover { background: rgba(255, 255, 255, 0.07); color: #fff; }
 .det-models__row[data-on='1'] { color: #fff; background: rgba(139, 92, 246, 0.2); }
 .det-models__effort { margin-left: auto; flex: none; color: #8b87a0; font-size: 9.5px; }
@@ -405,7 +406,7 @@ window.__ModuleLoader__.load({
                 'data-on': on ? '1' : undefined,
                 onClick: () => chooseModel(group.id, model),
               },
-              e('span', { className: 'det-models__name' }, model.name),
+              e('span', { className: 'det-models__name', title: model.name }, model.name),
               e('span', { className: 'det-models__effort' }, effortName),
             ),
           );
