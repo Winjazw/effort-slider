@@ -34,7 +34,10 @@ const CSS = `
 .det-head__model { display: flex; align-items: center; gap: 3px; width: fit-content; max-width: 100%; margin: 0 auto; color: #a9a6b8; font: 400 10.5px/1.3 Inter, system-ui, -apple-system, sans-serif; }
 .det-head:hover .det-head__model { color: #ddd9ea; }
 .det-head__name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.det-models { max-height: 208px; margin: -2px 0 8px; padding: 3px; overflow-y: auto; border-radius: 10px; background: rgba(0, 0, 0, 0.28); scrollbar-width: thin; -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 16px), transparent); mask-image: linear-gradient(to bottom, #000 calc(100% - 16px), transparent); }
+.det-models { max-height: 208px; margin: -2px 0 8px; padding: 3px; overflow-y: auto; border-radius: 10px; background: rgba(0, 0, 0, 0.28); scrollbar-width: thin; }
+.det-models[data-edge='bottom'] { -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 16px), transparent 100%); mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 16px), transparent 100%); }
+.det-models[data-edge='top'] { -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 16px, #000 100%); mask-image: linear-gradient(to bottom, transparent 0, #000 16px, #000 100%); }
+.det-models[data-edge='both'] { -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%); mask-image: linear-gradient(to bottom, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%); }
 .det-models__group { padding: 7px 6px 3px; color: #74718a; font-size: 9px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
 .det-models__row { display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; width: 100%; min-height: 29px; padding: 5px 8px; border: 0; border-radius: 7px; background: transparent; color: #cfcbdd; font: 400 11.5px/1.3 Inter, system-ui, -apple-system, sans-serif; text-align: left; cursor: pointer; }
 .det-models__name { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -126,6 +129,16 @@ function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
 }
 
+function edgeOf(el) {
+  if (!el) return 'none';
+  const moreBelow = el.scrollHeight - el.scrollTop - el.clientHeight > 2;
+  const moreAbove = el.scrollTop > 2;
+  if (moreAbove && moreBelow) return 'both';
+  if (moreBelow) return 'bottom';
+  if (moreAbove) return 'top';
+  return 'none';
+}
+
 window.__ModuleLoader__.load({
   id: 'dsh-effort-tiers',
   factory(require) {
@@ -186,6 +199,7 @@ window.__ModuleLoader__.load({
       const available = props.available !== false && !locked;
 
       const [open, setOpen] = React.useState(false);
+      const [listEdge, setListEdge] = React.useState('none');
       const [showModels, setShowModels] = React.useState(false);
       const [draft, setDraft] = React.useState(null);
       const [busy, setBusy] = React.useState(false);
@@ -194,6 +208,7 @@ window.__ModuleLoader__.load({
       const triggerRef = React.useRef(null);
       const panelRef = React.useRef(null);
       const trackRef = React.useRef(null);
+      const listRef = React.useRef(null);
       const draggingRef = React.useRef(false);
 
       const reasoning = reasoningOf(state, state.current);
@@ -254,6 +269,18 @@ window.__ModuleLoader__.load({
           window.removeEventListener('scroll', reposition, true);
         };
       }, [open]);
+
+      React.useEffect(() => {
+        if (!showModels) {
+          setListEdge('none');
+          return undefined;
+        }
+        const raf = requestAnimationFrame(() => {
+          const el = listRef.current;
+          if (el) setListEdge(edgeOf(el));
+        });
+        return () => cancelAnimationFrame(raf);
+      }, [showModels]);
 
       React.useEffect(() => {
         if (!open) return undefined;
@@ -449,7 +476,16 @@ window.__ModuleLoader__.load({
           ),
         ),
         showModels
-          ? e('div', { className: 'det-models' }, rows.length ? rows : e('div', { className: 'det-models__group' }, '正在读取模型目录…'))
+          ? e(
+              'div',
+              {
+                ref: listRef,
+                className: 'det-models',
+                'data-edge': listEdge,
+                onScroll: () => setListEdge(edgeOf(listRef.current)),
+              },
+              rows.length ? rows : e('div', { className: 'det-models__group' }, '正在读取模型目录…'),
+            )
           : null,
         e(
           'div',
