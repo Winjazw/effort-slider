@@ -21,6 +21,8 @@ An in-line composer control that replaces the standard model picker. It enables 
 - **Cosmic Visuals**: Built-in real-time particle system. At `Max` tier, the track transforms into a vibrant cosmic field with drifting nebulae and stars.
 - **Persistent State**: Displays the full model name and active tier in a compact composer pill for glanceable context.
 - **Host Integration**: Leverages `session.selectModel` to maintain session-specific scope without overriding global defaults.
+- **Agent team toggle**: A 「智能体团队」 checkbox at the bottom of the panel mirrors the shipped switch — same `agentTeam` projection, same `agentTeams.setEnabled` write.
+- **Theme aware**: text and borders follow the `--dsw-alias-*` tokens, so the model name stays legible in light mode.
 
 ## Install
 1. **Clone**: `git clone https://github.com/Winjazw/effort-slider.git`

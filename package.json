@@ -1,6 +1,6 @@
 {
   "name": "effort-slider",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A draggable reasoning-effort slider that replaces the composer's model picker; the top tier turns the track into a drifting cosmic particle field.",
   "license": "MIT",
   "author": "Zhiwei Wang",
